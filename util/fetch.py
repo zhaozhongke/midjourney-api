@@ -45,7 +45,7 @@ async def fetch(
         method: str = FetchMethod.post, **kwargs
 ) -> Union[bool, None]:
     logger.debug(f"Fetch: {url}, {kwargs}")
-    async with session.request(method, url, **kwargs) as resp:
+    async with session.request(method, url, verify_ssl=False, **kwargs) as resp:
         if not resp.ok:
             return None
         return True
@@ -58,7 +58,7 @@ async def fetch_json(
         method: str = FetchMethod.post, **kwargs
 ) -> Union[Dict, None]:
     logger.debug(f"Fetch text: {url}")
-    async with session.request(method, url, **kwargs) as resp:
+    async with session.request(method, url,verify_ssl=False,  **kwargs) as resp:
         if not resp.ok:
             return None
         return await resp.json()

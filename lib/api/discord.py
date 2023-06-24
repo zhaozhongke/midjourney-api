@@ -27,6 +27,7 @@ class TriggerType(str, Enum):
 
 async def trigger(payload: Dict[str, Any]):
     async with aiohttp.ClientSession(
+            trust_env=True,
             timeout=aiohttp.ClientTimeout(total=30),
             headers=HEADERS
     ) as session:
@@ -44,6 +45,7 @@ async def upload_attachment(
         }]
     }
     async with aiohttp.ClientSession(
+            trust_env=True,
             timeout=aiohttp.ClientTimeout(total=30),
             headers=HEADERS
     ) as session:
@@ -60,6 +62,7 @@ async def upload_attachment(
 async def put_attachment(url: str, image: bytes):
     headers = {"Content-Type": "image/png"}
     async with aiohttp.ClientSession(
+            trust_env=True,
             timeout=aiohttp.ClientTimeout(total=30),
             headers=headers
     ) as session:
@@ -80,6 +83,7 @@ async def send_attachment_message(upload_filename: str) -> Union[str, None]:
         }]
     }
     async with aiohttp.ClientSession(
+            trust_env=True,
             timeout=aiohttp.ClientTimeout(total=30),
             headers=HEADERS
     ) as session:

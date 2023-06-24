@@ -14,6 +14,7 @@ async def callback(data):
 
     headers = {"Content-Type": "application/json"}
     async with aiohttp.ClientSession(
+            trust_env=True,
             timeout=aiohttp.ClientTimeout(total=30),
             headers=headers
     ) as session:
@@ -30,6 +31,7 @@ async def queue_release(trigger_id: str):
     headers = {"Content-Type": "application/json"}
     data = {"trigger_id": trigger_id}
     async with aiohttp.ClientSession(
+            trust_env=True,
             timeout=aiohttp.ClientTimeout(total=30),
             headers=headers
     ) as session:
